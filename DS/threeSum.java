@@ -35,6 +35,12 @@ public class threeSum {
 					int sum = nums[low] + nums[high];
 					if(nums[i] + sum == 0) {
 						list.add(Arrays.asList(nums[i], nums[low], nums[high]));
+						
+						//these 2 lines, to avoid duplicate values to avoid [-2,0,0,2,2]
+						//getting this anser [[-2,0,2],[-2,0,2]]
+						while(low<high && nums[low] == nums[low+1]) low++;
+						while(low<high && nums[high] == nums[high-1]) high--;
+
 						low++;
 						high--;
 					} else if(sum> -nums[i]) {
